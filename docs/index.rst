@@ -6,9 +6,6 @@
 ADA: (Yet) Another Domain Adaptation library
 ============================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
 
 Context
 -------
