@@ -1,0 +1,34 @@
+{
+  "train_params": {
+    "adapt_lambda": true,
+    "adapt_lr": false,
+    "lambda_init": 1,
+    "nb_adapt_epochs": 100,
+    "nb_init_epochs": 50,
+    "init_lr": 0.01,
+    "batch_size": 32,
+    "optimizer": {
+      "type": "Adam",
+      "optim_params": {
+          "weight_decay": 0.0005,
+          "betas" : [0.8, 0.999]
+      }
+    }
+  },
+  "archi_params": {
+    "feature": {
+      "name": "feedforward",
+    "hidden_size": [
+      8,
+      4
+      ]
+    },
+    "task": {
+      "name": "feedforward"
+    },
+    "critic": {
+      "name": "feedforward",
+      "hidden_size": [4, 4]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_group": "toy",
+  "dataset_name": "toy XOR",
+  "n_samples": 300,
+  "shift": {
+    "data_shift": "covariate_shift_y",
+    "re": 3.14,
+    "te": 0.6
+  },
+  "cluster": {
+    "dim": 2,
+    "n_clusters": 2,
+    "radius": 0.01,
+    "proba_classes": 0.5,
+    "data_seed": 123
+  }
+}

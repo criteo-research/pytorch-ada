@@ -1,0 +1,8 @@
+{
+    "dataset_group": "office31",
+    "dataset_name": "Amazon -> Webcam",
+    "source": "amazon",
+    "target": "webcam",
+    "size_type": "source",
+    "weight_type": "natural"
+}

@@ -1,0 +1,31 @@
+{
+    "train_params": {
+      "adapt_lambda": true,
+      "adapt_lr": true,
+      "lambda_init": 1,
+      "nb_adapt_epochs": 100,
+      "nb_init_epochs": 20,
+      "init_lr": 0.001,
+      "batch_size": 150,
+      "optimizer": {
+        "type": "SGD",
+        "optim_params": {
+            "momentum": 0.9,
+            "weight_decay": 0.0005,
+            "nesterov": true
+        }
+      }
+    },
+    "archi_params": {
+      "feature": {
+        "name": "digits"
+      },
+      "task": {
+        "name": "digits",
+        "n_classes": 10
+      },
+      "critic": {
+        "name": "digits"
+      }
+    }
+  }

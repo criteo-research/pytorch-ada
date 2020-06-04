@@ -1,0 +1,24 @@
+{
+    "Source": {
+        "method": "Source"
+    },
+    "DANN": {
+        "method": "DANN"
+    },
+    "CDAN": {
+        "method": "CDAN",
+        "use_random": false
+    },
+    "CDAN-E": {
+        "method": "CDAN-E"
+    },
+    "DAN": {
+        "method": "DAN"
+    },
+    "JAN": {
+        "method": "JAN"
+    },
+    "WDGRL": {
+        "method": "WDGRL"
+    }
+}

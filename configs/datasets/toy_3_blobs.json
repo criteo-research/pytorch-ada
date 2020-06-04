@@ -1,0 +1,28 @@
+{
+  "dataset_group": "toy",
+  "dataset_name": "toy 3 blobs",
+  "n_samples": 500,
+  "shift": {
+    "data_shift": "covariate_shift_y",
+    "re": 0.0,
+    "te": -0.5
+  },
+  "cluster" : {
+    "dim": 2,
+    "n_clusters": 3,
+    "radius": [[0.002, 0.005], [0.005, 0.01], [0.05, 0.05]],
+    "proba_classes": [0.33, 0.33, 0.33],
+    "data_seed": 123,
+    "centers": [
+      [
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        1.0
+      ], 
+      [1, 1.5]
+    ]
+  }
+}

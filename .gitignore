@@ -1,5 +1,20 @@
-# Object file
-*.o
+.idea/
+.ipynb_checkpoints
 
-# Ada Library Information
-*.ali
+__pycache__
+*.egg-info
+*.pyc
+*.bak
+.logs/
+runs/
+data/
+blobs/
+mlruns/
+tensorboard/
+
+slack.json
+
+# documentation
+_build/
+source/
+
