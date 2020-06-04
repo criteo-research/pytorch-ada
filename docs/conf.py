@@ -33,10 +33,7 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
-    "recommonmark",
     "sphinx.ext.doctest",
-    #'sphinx.ext.intersphinx',
-    #'sphinx.ext.imgconverter',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
