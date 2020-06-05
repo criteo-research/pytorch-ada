@@ -28,6 +28,16 @@ def get_transform(kind):
                 transforms.Normalize([0.5], [0.5]),
             ]
         )
+    elif kind == "usps32rgb":
+        transform = transforms.Compose(
+            [
+                transforms.ToPILImage(),
+                transforms.Resize(32),
+                transforms.Grayscale(3),
+                transforms.ToTensor(),
+                transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+            ]
+        )
     elif kind == "mnistm":
         transform = transforms.Compose(
             [

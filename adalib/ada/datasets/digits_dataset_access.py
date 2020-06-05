@@ -14,11 +14,20 @@ class DigitDataset(Enum):
 
     @staticmethod
     def get_accesses(source: "DigitDataset", target: "DigitDataset", data_path):
-        transforms_default_names = {
-            DigitDataset.MNIST: "mnist32",
-            DigitDataset.MNISTM: "mnistm",
-            DigitDataset.USPS: "usps32",
-            DigitDataset.SVHN: "svhn",
+        channel_numbers = {
+            DigitDataset.MNIST: 1,
+            DigitDataset.MNISTM: 3,
+            DigitDataset.USPS: 1,
+            DigitDataset.SVHN: 3,
+        }
+
+        transform_names = {
+            (DigitDataset.MNIST, 1): "mnist32",
+            (DigitDataset.MNIST, 3): "mnist32rgb",
+            (DigitDataset.MNISTM, 3): "mnistm",
+            (DigitDataset.USPS, 1): "usps32",
+            (DigitDataset.USPS, 3): "usps32rgb",
+            (DigitDataset.SVHN, 3): "svhn",
         }
 
         factories = {
@@ -28,25 +37,10 @@ class DigitDataset(Enum):
             DigitDataset.SVHN: SVHNDatasetAccess,
         }
 
-        source_tf = transforms_default_names[source]
-        target_tf = transforms_default_names[target]
-        num_channels = 1
-
         # handle color/nb channels
-        if source is DigitDataset.MNIST and target in [
-            DigitDataset.SVHN,
-            DigitDataset.MNISTM,
-        ]:
-            source_tf = "mnist32rgb"
-            num_channels = 3
-        if target is DigitDataset.MNIST and source in [
-            DigitDataset.SVHN,
-            DigitDataset.MNISTM,
-        ]:
-            target_tf = "mnist32rgb"
-            num_channels = 3
-
-        # TODO: what about USPS?
+        num_channels = max(channel_numbers[source], channel_numbers[target])
+        source_tf = transform_names[(source, num_channels)]
+        target_tf = transform_names[(target, num_channels)]
 
         return (
             factories[source](data_path, source_tf),
