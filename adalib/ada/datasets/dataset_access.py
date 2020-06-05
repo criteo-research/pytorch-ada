@@ -10,6 +10,9 @@ class DatasetAccess:
     # TODO: see also xxx
     """
 
+    def __init__(self, n_classes):
+        self._n_classes = n_classes
+
     def n_classes(self):
         return self._n_classes
 

@@ -447,12 +447,12 @@ class CausalBlobs(torch.utils.data.Dataset):
 
 class CausalBlobsDataAccess(DatasetAccess):
     def __init__(self, data_path, transform, download, cluster_params, n_samples):
+        super().__init__(n_classes=cluster_params.get("n_clusters", 2))
         self._data_path = data_path
         self._transform = transform
         self._download = download
         self._cluster_params = cluster_params
         self._n_samples = n_samples
-        self._n_classes = cluster_params.get("n_clusters", 2)
 
     def get_train(self):
         return CausalBlobs(

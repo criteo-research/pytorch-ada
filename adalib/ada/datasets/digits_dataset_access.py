@@ -57,9 +57,9 @@ class DigitDataset(Enum):
 
 class DigitDatasetAccess(DatasetAccess):
     def __init__(self, data_path, transform_kind):
+        super().__init__(n_classes=10)
         self._data_path = data_path
         self._transform = proc.get_transform(transform_kind)
-        self._n_classes = 10
 
 
 class MNISTDatasetAccess(DigitDatasetAccess):

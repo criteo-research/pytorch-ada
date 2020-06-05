@@ -20,10 +20,10 @@ class Office31Dataset(Enum):
 
 class Office31DatasetAccess(DatasetAccess):
     def __init__(self, domain, data_path):
+        super().__init__(n_classes=31)
         self._data_path = data_path
         self._transform = proc.get_transform("office")
         self._domain = domain.value
-        self._n_classes = 31
 
     def get_train(self):
         return Office31(
