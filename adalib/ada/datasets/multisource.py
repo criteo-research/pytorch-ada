@@ -60,7 +60,7 @@ class MultiDomainDatasets(DomainsDatasetBase):
         self,
         source_access: DatasetAccess,
         target_access: DatasetAccess,
-        dev_split_ratio=0.1,
+        val_split_ratio=0.1,
         source_sampling_config=None,
         target_sampling_config=None,
         size_type=DatasetSizeType.Max,
@@ -71,9 +71,9 @@ class MultiDomainDatasets(DomainsDatasetBase):
             iterated over.
 
         Args:
-            source_access (DatasetAccess): [description]
-            target_access (DatasetAccess): [description]
-            dev_split_ratio (float, optional): [description]. Defaults to 0.1.
+            source_access (DatasetAccess): accessor for the source dataset
+            target_access (DatasetAccess): accessor for the target dataset
+            val_split_ratio (float, optional): ratio for the validation part of the train dataset. Defaults to 0.1.
             source_sampling_config (SamplingConfig, optional): How to sample from the source. Defaults to None (=> RandomSampler).
             target_sampling_config (SamplingConfig, optional): How to sample from the target. Defaults to None (=> RandomSampler).
             size_type (DatasetSizeType, optional): Which dataset size to use to define the number of epochs vs batch_size. Defaults to DatasetSizeType.Max.
@@ -83,7 +83,7 @@ class MultiDomainDatasets(DomainsDatasetBase):
         """
         self._source_access = source_access
         self._target_access = target_access
-        self._dev_split_ratio = dev_split_ratio
+        self._val_split_ratio = val_split_ratio
         self._source_sampling_config = (
             source_sampling_config
             if source_sampling_config is not None
@@ -109,13 +109,13 @@ class MultiDomainDatasets(DomainsDatasetBase):
         (
             self._source_by_split["train"],
             self._source_by_split["valid"],
-        ) = self._source_access.get_train_val(self._dev_split_ratio)
+        ) = self._source_access.get_train_val(self._val_split_ratio)
 
         logging.debug("Load target")
         (
             self._target_by_split["train"],
             self._target_by_split["valid"],
-        ) = self._target_access.get_train_val(self._dev_split_ratio)
+        ) = self._target_access.get_train_val(self._val_split_ratio)
 
         logging.debug("Load source Test")
         self._source_by_split["test"] = self._source_access.get_test()

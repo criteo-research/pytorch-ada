@@ -2,12 +2,10 @@ import torch
 import torch.utils.data
 
 
-# TODO: put val_ratio as attribute?
 class DatasetAccess:
     """
     This class ensures a unique API is used to access training, validation and test splits
     of any dataset.
-    # TODO: see also xxx
     """
 
     def __init__(self, n_classes):
