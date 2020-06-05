@@ -1,6 +1,6 @@
 {
     "dataset_group": "digits",
-    "dataset_name": "MNIST -> USPS",
+    "dataset_name": "MNIST to USPS",
     "source": "mnist",
     "target": "usps",
     "size_type": "source",

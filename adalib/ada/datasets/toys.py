@@ -7,7 +7,7 @@ from sklearn.utils import check_random_state
 
 import torch
 from torch.utils.data import Dataset
-from ada.utils.experimentation import param_to_str
+import ada.utils.experimentation as xp
 from ada.datasets.dataset_access import DatasetAccess
 
 
@@ -368,9 +368,15 @@ class CausalBlobs(torch.utils.data.Dataset):
         else:
             self.cluster_params = cluster_params
 
-        cluster_name = param_to_str(cluster_params)
-        transfo_name = param_to_str(transform)
-        self.data_dir = os.path.join(cluster_name, transfo_name)
+        cluster_hash = xp.param_to_hash(cluster_params)
+        transform_hash = xp.param_to_hash(transform)
+        self.data_dir = os.path.join(cluster_hash, transform_hash)
+        xp.record_hashes(
+            os.path.join(self.root, self.raw_folder, "parameters.json"),
+            f"{cluster_hash}/{transform_hash}",
+            {"cluster_params": cluster_params, "transform": transform,},
+        )
+
         self.training_file = "causal_blobs_train.pt"
         self.test_file = "causal_blobs_test.pt"
         self._cluster_gen = None
