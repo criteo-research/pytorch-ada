@@ -3,7 +3,6 @@ import scipy.stats as ss
 import os
 import logging
 
-from sklearn.preprocessing import normalize
 from sklearn.utils import check_random_state
 
 import torch
@@ -132,7 +131,6 @@ class CausalClusterGenerator:
             centers=centers,
             random_state=self._random_state,
         )
-        self._normalized = normalize
 
     def generate_sample(
         self,

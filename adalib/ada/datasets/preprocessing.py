@@ -1,7 +1,7 @@
 import torchvision.transforms as transforms
 
 
-def get_transform(kind=None):
+def get_transform(kind):
     if kind == "mnist32":
         transform = transforms.Compose(
             [
@@ -19,14 +19,6 @@ def get_transform(kind=None):
                 transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
             ]
         )
-    elif kind == "mnistrgb":
-        transform = transforms.Compose(
-            [
-                transforms.Grayscale(3),
-                transforms.ToTensor(),
-                transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
-            ]
-        )
     elif kind == "usps32":
         transform = transforms.Compose(
             [
@@ -35,10 +27,6 @@ def get_transform(kind=None):
                 transforms.ToTensor(),
                 transforms.Normalize([0.5], [0.5]),
             ]
-        )
-    elif kind == "normalized":
-        transform = transforms.Compose(
-            [transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))]
         )
     elif kind == "mnistm":
         transform = transforms.Compose(
@@ -69,5 +57,5 @@ def get_transform(kind=None):
             ]
         )
     else:
-        transform = transforms.ToTensor()
+        raise ValueError(f"Unknown transform kind '{kind}'")
     return transform

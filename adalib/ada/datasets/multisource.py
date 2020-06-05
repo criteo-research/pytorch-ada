@@ -7,15 +7,6 @@ from ada.datasets.sampler import get_labels, MultiDataLoader, SamplingConfig
 from ada.datasets.dataset_access import DatasetAccess
 
 
-# TODO: to be removed (only use in notebook)
-def get_dataset(data_getter, data_path, **getter_kwargs):
-    train_arg = getter_kwargs.pop("train_arg", None)
-    if train_arg is not None:
-        train_value = getter_kwargs.pop("train")
-        getter_kwargs[train_arg] = "train" if train_value else "test"
-    return data_getter(data_path, **getter_kwargs)
-
-
 class DatasetSizeType(Enum):
     Max = "max"  # size of the biggest dataset
     Source = "source"  # size of the source dataset

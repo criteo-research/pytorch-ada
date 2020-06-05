@@ -4,8 +4,6 @@ import logging
 import numpy as np
 from torch.utils.data.sampler import RandomSampler, BatchSampler
 
-# TODO write unit tests based on notebook test
-
 
 class SamplingConfig:
     def __init__(self, balance=False, class_weights=None):
