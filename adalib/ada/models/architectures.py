@@ -665,6 +665,12 @@ class WDGRLtrainer(BaseDANNLike):
     "Wasserstein distance guided representation learning for domain adaptation."
     Thirty-Second AAAI Conference on Artificial Intelligence. 2018. 
     https://arxiv.org/pdf/1707.01217.pdf
+
+    This class also implements the asymmetric ($\beta$) variant described in:
+    Wu, Yifan, et al.
+    "Domain adaptation with asymmetrically-relaxed distribution alignment."
+    ICML (2019)
+    https://arxiv.org/pdf/1903.01689.pdf
     """
 
     def __init__(

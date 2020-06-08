@@ -212,6 +212,7 @@ Browse the documentation
    :maxdepth: 1
    
    getting_started
+   algorithms
    benchmarks
    known_issues
    source/modules
