@@ -138,9 +138,12 @@ def train_model(
             training only on 1 batch per epoch for debugging. Defaults to False.
 
     Returns:
-        pl.Trainer: object containing the resulting metrics, used for evaluation.
-        BaseAdaptTrainer: pl.LightningModule object (derived class depending on `method`), containing 
-            both the dataset & trained networks.
+        2-elements tuple containing:
+        
+            - pl.Trainer: object containing the resulting metrics, used for evaluation.
+            - BaseAdaptTrainer: pl.LightningModule object (derived class depending on `method`), containing 
+                both the dataset & trained networks.
+    
     """
     if type(method) is str:
         method = archis.Method(method)

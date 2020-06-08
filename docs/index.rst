@@ -3,13 +3,6 @@
 ADA: (Yet) Another Domain Adaptation library
 ============================================
 
-.. toctree::
-   :hidden:
-   
-   getting_started
-   benchmarks
-   known_issues
-
 Context
 -------
 
@@ -211,8 +204,21 @@ First ``pip`` install ``sphinx``, ``sphinx-paramlinks``,
         sphinx-apidoc -o source/ ../adalib/ada ../scripts/
         make html
 
-Indices and tables
-==================
+
+Browse the documentation
+========================
+
+.. toctree::
+   :maxdepth: 1
+   
+   getting_started
+   benchmarks
+   known_issues
+   source/modules
+
+
+Browse the API
+==============
 
 * :ref:`genindex`
 * :ref:`modindex`

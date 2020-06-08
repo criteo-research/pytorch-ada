@@ -80,7 +80,9 @@ def plot_archi_data(
 ):
     """This method generates a series of figures depending on the model and
     on the dataset used.
+    
     For toy data, more figures are available:
+
         - the classifier boundary
         - the domain boundary
         - the entropy values
@@ -110,6 +112,7 @@ def plot_archi_data(
             If True, plots the level of entropy values between 0 and 1
         num_samples (int, optional): defaults to 600
             Number of random samples use for plotting
+
     """
     import torch
 
