@@ -22,7 +22,7 @@ project = "Ada"
 copyright = "2020, Anne-Marie Tousch, Christophe Renaudin"
 author = "Anne-Marie Tousch, Christophe Renaudin"
 
-master_doc = 'index'
+master_doc = "index"
 
 # -- General configuration ---------------------------------------------------
 
@@ -41,7 +41,7 @@ extensions = [
 templates_path = ["_templates"]
 
 # Exclude docstrings from external base classes
-autodoc_mock_imports = ["pytorch_lightning"]
+autodoc_mock_imports = ["pytorch_lightning", "streamlit"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -58,4 +58,4 @@ autosummary_generate = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "haiku"
+html_theme = "alabaster"

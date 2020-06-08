@@ -1,11 +1,7 @@
-.. ADA documentation master file, created by
-   sphinx-quickstart on Mon May 11 15:50:25 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. ADA documentation master file.
 
 ADA: (Yet) Another Domain Adaptation library
 ============================================
-
 
 Context
 -------
@@ -41,8 +37,8 @@ domain adaptation:
    (`DAN <http://proceedings.mlr.press/v37/long15.pdf>`__) and Joint
    Adaptation Networks (`JAN <https://arxiv.org/pdf/1605.06636.pdf>`__)
 
-All these methods are implemented in
-`models/architectures.py <_modules/ada/models/architectures.html>`__ .
+All these methods are implemented in 
+:mod:`ada.models.architectures`.
 
 Adversarial and OT-based methods both rely on 3 networks:
 
@@ -99,6 +95,9 @@ Most parameters are available and can be changed through configuration
 files, which are all grouped in the ``configs`` folder: - datasets -
 network layers and training parameters - methods (Source, DANN, CDAN…),
 and their specific parameters
+
+Checkout the :doc:`getting_started` page to get a more in-depth description of how you can use configuration files to run
+most of your experiments.
 
 Advanced options
 ----------------
@@ -177,30 +176,7 @@ MNIST -> USPS (5 runs)
 | WDGRL    | 98.7% +- 0.13   | 85.7% +- 6.57   |
 +----------+-----------------+-----------------+
 
-MNIST -> SVHN (5 runs)
-~~~~~~~~~~~~~~~~~~~~~~
-
-This problem is much harder than the others and results are usually not
-reported. Indeed, most methods fail to improve performance -- on the
-contrary, aligning features results in decreased global performance.
-
-+----------+------------------+-----------------+
-| Method   | source acc       | target acc      |
-+==========+==================+=================+
-| Source   | 91.6% +- 2.28    | 16.4% +- 3.31   |
-+----------+------------------+-----------------+
-| DANN     | 96.2% +- 0.24    | 19.5% +- 2.60   |
-+----------+------------------+-----------------+
-| CDAN     | 67.0% +- 12.74   | 11.5% +- 1.62   |
-+----------+------------------+-----------------+
-| CDAN-E   | 59.8% +- 18.99   | 11.3% +- 1.08   |
-+----------+------------------+-----------------+
-| DAN      | 93.3% +- 3.94    | 16.7% +- 1.19   |
-+----------+------------------+-----------------+
-| JAN      | 68.4% +- 12.72   | 11.5% +- 1.53   |
-+----------+------------------+-----------------+
-| WDGRL    | 77.4% +- 3.11    | 13.8% +- 1.75   |
-+----------+------------------+-----------------+
+See :doc:`/benchmarks` for more complete benchmarks.
 
 Contributing
 ------------
@@ -228,8 +204,21 @@ First ``pip`` install ``sphinx``, ``sphinx-paramlinks``,
         sphinx-apidoc -o source/ ../adalib/ada ../scripts/
         make html
 
-Indices and tables
-==================
+
+Browse the documentation
+========================
+
+.. toctree::
+   :maxdepth: 1
+   
+   getting_started
+   benchmarks
+   known_issues
+   source/modules
+
+
+Browse the API
+==============
 
 * :ref:`genindex`
 * :ref:`modindex`
