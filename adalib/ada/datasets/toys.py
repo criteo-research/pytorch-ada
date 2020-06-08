@@ -371,8 +371,10 @@ class CausalBlobs(torch.utils.data.Dataset):
         cluster_hash = xp.param_to_hash(cluster_params)
         transform_hash = xp.param_to_hash(transform)
         self.data_dir = os.path.join(cluster_hash, transform_hash)
+        root_dir = os.path.join(self.root, self.raw_folder)
+        os.makedirs(root_dir, exist_ok=True)
         xp.record_hashes(
-            os.path.join(self.root, self.raw_folder, "parameters.json"),
+            os.path.join(root_dir, "parameters.json"),
             f"{cluster_hash}/{transform_hash}",
             {"cluster_params": cluster_params, "transform": transform,},
         )
