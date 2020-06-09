@@ -272,7 +272,7 @@ if __name__ == "__main__":
         "classifier boundary",
         "PCA",
     ]
-    all_figs = ["entropy", "neurons", "TSNE", "UMAP"] + default_fig_names
+    all_figs = ["domain boundary", "entropy", "neurons", "TSNE", "UMAP"] + default_fig_names
     fig_names = st.multiselect(
         "Choose your plots:", all_figs, default=default_fig_names
     )
