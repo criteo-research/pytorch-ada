@@ -1,4 +1,5 @@
 # ADA: (Yet) Another Domain Adaptation library
+[![Documentation Status](https://readthedocs.org/projects/pytorch-ada/badge/)](https://pytorch-ada.readthedocs.io/)
 
 ## Context
 
