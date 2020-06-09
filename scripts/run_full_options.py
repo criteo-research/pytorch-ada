@@ -163,11 +163,11 @@ if __name__ == "__main__":
     if network_config_file is None:
         data_name = data_params["dataset_group"]
         network_config_file = f"../configs/{data_name}_network.json"
-        if not os.path.exists(network_config_file):
-            raise ValueError(
-                f"{network_config_file} doesn't exist.\
-                You need to create it or specify a `netconf` parameter with a valid config file."
-            )
+    if not os.path.exists(network_config_file):
+        raise ValueError(
+            f"{network_config_file} doesn't exist.\
+            You need to create it or specify a `netconf` parameter with a valid config file."
+        )
     network_params = xp.load_json_dict(network_config_file)
 
     test_params = network_params.copy()

@@ -50,7 +50,7 @@ class NetworkFactory:
     def get_task_classifier(self, input_dim, n_classes):
         cfg = self._params["task"]
         if cfg["name"] == "feedforward":
-            return amm.FFSoftmaxClassifier(input_dim, n_classes=n_classes, name="h")
+            return amm.FFSoftmaxClassifier(input_dim, n_classes=n_classes, name="h", hidden=cfg.get("hidden_size", ()))
         if cfg["name"] == "digits":
             return amm.DataClassifierDigits(input_size=input_dim, n_class=n_classes)
         raise NotImplementedError()
