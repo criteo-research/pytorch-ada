@@ -205,6 +205,23 @@ First ``pip`` install ``sphinx``, ``sphinx-paramlinks``,
         make html
 
 
+Citing
+------
+
+This library is released upon Apache 2.0 license.
+
+If this library is useful for your research please cite:
+
+::
+
+        @misc{adalib2020,
+        title={(Yet) Another Domain Adaptation library},
+        author={Tousch, Anne-Marie and Renaudin, Christophe},
+        url={https://github.com/criteo-research/pytorch-ada},
+        year={2020}
+        }
+
+
 Browse the documentation
 ========================
 

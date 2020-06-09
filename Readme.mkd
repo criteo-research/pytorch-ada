@@ -151,3 +151,17 @@ Generate the documentation:
     sphinx-apidoc -o source/ ../adalib/ada ../scripts/
     make html
 ```
+
+## Citing
+
+If this library is useful for your research please cite:
+
+```
+    @misc{adalib2020,
+    title={(Yet) Another Domain Adaptation library},
+    author={Tousch, Anne-Marie and Renaudin, Christophe},
+    url={https://github.com/criteo-research/pytorch-ada},
+    year={2020}
+    }
+```
+
