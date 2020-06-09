@@ -43,6 +43,23 @@ templates_path = ["_templates"]
 # Exclude docstrings from external base classes
 autodoc_mock_imports = ["pytorch_lightning", "streamlit"]
 
+
+# Workaround to not skip ADA classes that inherit from (mocked) classes from skipped modules
+def setup(app):
+    def skip_member(app, what, name, obj, skip, options):
+        if getattr(obj, "__sphinx_mock__", False) and obj.__module__.startswith("ada."):
+            if (
+                obj.__new__.__module__ is not None
+                and obj.__new__.__module__.startswith("sphinx.")
+            ):
+                # Trick to keep constructor arguments
+                obj.__new__ = object.__new__
+            return False
+        return None
+
+    app.connect("autodoc-skip-member", skip_member)
+
+
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
