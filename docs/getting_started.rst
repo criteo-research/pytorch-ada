@@ -1,6 +1,7 @@
 Getting started
 ################
 
+.. include:: quickstart.rst
 
 Quick run on other datasets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
