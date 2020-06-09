@@ -88,7 +88,8 @@ Optionally, you can use the `streamlit` app. First install `streamlit` with `pip
 ```
     streamlit run run_toys_app.py
 ```
-This will start a web app with a default port = 8501.
+This will start a web app with a default port = 8501, which you can view in your brower. It looks like this:
+![Streamlit app screenshot](docs/images/streamlit_screenshot.png)
 
 
 ## Benchmarks results
