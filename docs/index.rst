@@ -51,6 +51,8 @@ Adversarial and OT-based methods both rely on 3 networks:
 
 MMD-based methods don't make use of the critic network.
 
+The full list of implemented algorithm with references can be found in the :doc:`/algorithms` section.
+
 Quick start
 -----------
 
@@ -122,14 +124,21 @@ Streamlit application
 ~~~~~~~~~~~~~~~~~~~~~
 
 Optionally, you can use the ``streamlit`` app. First install
-``streamlit`` with ``pip install streamlit``, then launch the app like
-this:
+``streamlit`` with
+
+::
+
+        pip install streamlit
+
+then launch the app like this:
 
 ::
 
         streamlit run run_toys_app.py
 
-This will start a web app with a default port = 8501.
+This will start a web app with a default port = 8501. It should look like this in your browser:
+
+.. image:: images/ada_blocks.png
 
 Benchmarks results
 ------------------
@@ -203,6 +212,21 @@ First ``pip`` install ``sphinx``, ``sphinx-paramlinks``,
         cd docs
         sphinx-apidoc -o source/ ../adalib/ada ../scripts/
         make html
+
+Citing
+------
+
+If this library is useful for your research please cite:
+
+::
+
+        @misc{adalib2020,
+        title={(Yet) Another Domain Adaptation library},
+        author={Tousch, Anne-Marie and Renaudin, Christophe},
+        url={https://github.com/criteo-research/pytorch-ada},
+        year={2020}
+        }
+
 
 
 Browse the documentation
