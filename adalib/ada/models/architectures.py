@@ -283,6 +283,21 @@ class BaseAdaptTrainer(pl.LightningModule):
         raise NotImplementedError("Forward pass needs to be defined.")
 
     def compute_loss(self, batch, split_name="V"):
+        """Define the loss of the model
+
+        Args:
+            batch (tuple): batches returned by the MultiDomainLoader.
+            split_name (str, optional): learning stage (one of ["T", "V", "Te"]). 
+                Defaults to "V" for validation. "T" is for training and "Te" for test.
+                This is currently used only for naming the metrics used for logging.
+
+        Returns:
+            a 3-element tuple with task_loss, adv_loss, log_metrics.
+            log_metrics should be a dictionary.
+
+        Raises:
+            NotImplementedError: children of this classes should implement this method.
+        """
         raise NotImplementedError("Loss needs to be defined.")
 
     def training_step(self, batch, batch_nb):
