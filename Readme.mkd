@@ -9,6 +9,8 @@ We built ADA with the idea of:
 - minimizing the boilerplate when developing a new method (loading data from several domains, logging errors, switching from CPU to GPU).
 - allowing fair comparison between methods by running all of them within the exact same environment.
 
+You can find a more complete documentation on [pytorch-ada.readthedocs.io/](https://pytorch-ada.readthedocs.io/).
+
 ## Quick description
 
 Three types of methods are available for unsupervised domain adaptation:
@@ -118,19 +120,7 @@ This will start a web app with a default port = 8501, which you can view in your
 |JAN|98.6% +- 0.30|89.5% +- 2.00|
 |WDGRL|98.7% +- 0.13|85.7% +- 6.57|
 
-### MNIST -> SVHN (5 runs)
-
-This problem is much harder than the others and results are usually not reported. Indeed, most methods fail to improve performance -- on the contrary, aligning features results in decreased global performance.
-
-|Method|source acc|target acc|
-|:----|:---:|:---:|
-|Source|91.6% +- 2.28|16.4% +- 3.31|
-|DANN|96.2% +- 0.24|19.5% +- 2.60|
-|CDAN|67.0% +- 12.74|11.5% +- 1.62|
-|CDAN-E|59.8% +- 18.99|11.3% +- 1.08|
-|DAN|93.3% +- 3.94|16.7% +- 1.19|
-|JAN|68.4% +- 12.72|11.5% +- 1.53|
-|WDGRL|77.4% +- 3.11|13.8% +- 1.75|
+Checkout the [documentation benchmark page](https://pytorch-ada.readthedocs.io/en/latest/benchmarks.html) for more results.
 
 ## Contributing
 
