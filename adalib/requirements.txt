@@ -13,6 +13,6 @@ torch>=1.2.0
 torchvision>=0.4.0
 torchviz>=0.0.1
 tornado>=6.0.3
-pytorch-lightning
+pytorch-lightning==0.7.3
 tqdm>=4.35.0
 umap-learn>=0.4.3
