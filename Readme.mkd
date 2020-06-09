@@ -11,15 +11,16 @@ We built ADA with the idea of:
 
 ## Quick description
 
-Methods from the main 3 groups of methods are available for unsupervised domain adaptation:
+Three types of methods are available for unsupervised domain adaptation:
 
 - Adversarial methods: Domain-adversarial neural networks ([DANN](https://arxiv.org/abs/1505.07818)) and Conditional Adversarial Domain Adaptation networks ([CDAN](https://papers.nips.cc/paper/7436-conditional-adversarial-domain-adaptation.pdf)),
 - Optimal-Transport-based methods: Wasserstein distance guided representation learning ([WDGRL](https://arxiv.org/pdf/1707.01217.pdf)), for which we propose two implementations, the second one being a variant better adapted to the PyTorch-Lightning, allowing for multi-GPU training.
 - MMD-based methods: Deep Adaptation Networks ([DAN](http://proceedings.mlr.press/v37/long15.pdf)) and Joint Adaptation Networks ([JAN](https://arxiv.org/pdf/1605.06636.pdf))
 
 
-All these methods are implemented in [`models/architectures.py`](ada/models/architectures.py).
+All these methods are implemented in [`models/architectures.py`](adalib/ada/models/architectures.py).
 
+![The 3-block architecture for domain adaptation](docs/images/ada_blocks.png)
 
 Adversarial and OT-based methods both rely on 3 networks:
 
@@ -27,7 +28,7 @@ Adversarial and OT-based methods both rely on 3 networks:
   - a task classifier network that learns to predict labels $y \in \mathcal{Y}$ from latent vectors,
   - a domain classifier network that tries to predict whether samples in $\mathcal{Z}$ come from the source or target domain.
 
-MMD-based methods don't make use of the critic network.
+MMD-based methods don't use the critic network.
 
 ## Quick start
 
