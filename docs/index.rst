@@ -18,6 +18,8 @@ We built ADA with the idea of:
 -  allowing fair comparison between methods by running all of them
    within the exact same environment.
 
+You can find an introduction to ADA on `medium <https://medium.com/criteo-labs/introducing-ada-another-domain-adaptation-library-5df8b79378ee>`__.
+
 Quick description
 -----------------
 
