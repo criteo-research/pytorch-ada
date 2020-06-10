@@ -26,7 +26,7 @@ def get_aggregated_metrics(metric_name_list, metric_outputs):
             metric_value = (
                 torch.cat([x[metric_name] for x in metric_outputs]).double().mean()
             )
-        metric_dict[metric_name] = metric_value.item()
+        metric_dict[metric_name] =          metric_value.item()
     return metric_dict
 
 
