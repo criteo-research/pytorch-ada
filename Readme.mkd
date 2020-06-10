@@ -10,17 +10,20 @@ We built ADA with the idea of:
 - minimizing the boilerplate when developing a new method (loading data from several domains, logging errors, switching from CPU to GPU).
 - allowing fair comparison between methods by running all of them within the exact same environment.
 
+You can find a more complete documentation on [pytorch-ada.readthedocs.io/](https://pytorch-ada.readthedocs.io/).
+
 ## Quick description
 
-Methods from the main 3 groups of methods are available for unsupervised domain adaptation:
+Three types of methods are available for unsupervised domain adaptation:
 
 - Adversarial methods: Domain-adversarial neural networks ([DANN](https://arxiv.org/abs/1505.07818)) and Conditional Adversarial Domain Adaptation networks ([CDAN](https://papers.nips.cc/paper/7436-conditional-adversarial-domain-adaptation.pdf)),
 - Optimal-Transport-based methods: Wasserstein distance guided representation learning ([WDGRL](https://arxiv.org/pdf/1707.01217.pdf)), for which we propose two implementations, the second one being a variant better adapted to the PyTorch-Lightning, allowing for multi-GPU training.
 - MMD-based methods: Deep Adaptation Networks ([DAN](http://proceedings.mlr.press/v37/long15.pdf)) and Joint Adaptation Networks ([JAN](https://arxiv.org/pdf/1605.06636.pdf))
 
 
-All these methods are implemented in [`models/architectures.py`](ada/models/architectures.py).
+All these methods are implemented in [`models/architectures.py`](adalib/ada/models/architectures.py).
 
+![The 3-block architecture for domain adaptation](docs/images/ada_blocks.png)
 
 Adversarial and OT-based methods both rely on 3 networks:
 
@@ -28,7 +31,7 @@ Adversarial and OT-based methods both rely on 3 networks:
   - a task classifier network that learns to predict labels $y \in \mathcal{Y}$ from latent vectors,
   - a domain classifier network that tries to predict whether samples in $\mathcal{Z}$ come from the source or target domain.
 
-MMD-based methods don't make use of the critic network.
+MMD-based methods don't use the critic network.
 
 ## Quick start
 
@@ -88,7 +91,8 @@ Optionally, you can use the `streamlit` app. First install `streamlit` with `pip
 ```
     streamlit run run_toys_app.py
 ```
-This will start a web app with a default port = 8501.
+This will start a web app with a default port = 8501, which you can view in your brower. It looks like this:
+![Streamlit app screenshot](docs/images/streamlit_screenshot.png)
 
 
 ## Benchmarks results
@@ -117,19 +121,7 @@ This will start a web app with a default port = 8501.
 |JAN|98.6% +- 0.30|89.5% +- 2.00|
 |WDGRL|98.7% +- 0.13|85.7% +- 6.57|
 
-### MNIST -> SVHN (5 runs)
-
-This problem is much harder than the others and results are usually not reported. Indeed, most methods fail to improve performance -- on the contrary, aligning features results in decreased global performance.
-
-|Method|source acc|target acc|
-|:----|:---:|:---:|
-|Source|91.6% +- 2.28|16.4% +- 3.31|
-|DANN|96.2% +- 0.24|19.5% +- 2.60|
-|CDAN|67.0% +- 12.74|11.5% +- 1.62|
-|CDAN-E|59.8% +- 18.99|11.3% +- 1.08|
-|DAN|93.3% +- 3.94|16.7% +- 1.19|
-|JAN|68.4% +- 12.72|11.5% +- 1.53|
-|WDGRL|77.4% +- 3.11|13.8% +- 1.75|
+Checkout the [documentation benchmark page](https://pytorch-ada.readthedocs.io/en/latest/benchmarks.html) for more results.
 
 ## Contributing
 
