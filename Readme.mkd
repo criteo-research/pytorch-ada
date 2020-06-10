@@ -1,5 +1,6 @@
 # ADA: (Yet) Another Domain Adaptation library
 [![Documentation Status](https://readthedocs.org/projects/pytorch-ada/badge/)](https://pytorch-ada.readthedocs.io/)
+![Lint](https://github.com/criteo-research/pytorch-ada/workflows/lint/badge.svg)
 
 ## Context
 
