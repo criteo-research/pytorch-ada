@@ -72,5 +72,5 @@ The classes for the unsupervised domain architectures are organised like this, w
 
 .. image:: images/ada_architecture_models.png
 
-Most methods may be implementing by just writing the forward pass and the ``compute_loss`` method, which should return the
+Most methods may be implemented by just writing the forward pass and the ``compute_loss`` method, which should return the
 two components :math:`L_c` and :math:`L_d`, as well as the metrics to use for logging and evaluation.
