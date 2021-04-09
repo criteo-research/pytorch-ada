@@ -4,10 +4,12 @@ See `Domain Adaptation Project at Berkeley <https://people.eecs.berkeley.edu/~jh
 """
 import tarfile
 import os
-import pickle
+import logging
 import urllib
+import urllib.parse
 import glob
 from PIL import Image
+import requests
 
 import numpy as np
 import torch
@@ -34,8 +36,7 @@ class Office31(data.Dataset):
             E.g, ``transforms.RandomCrop``
     """
 
-    # TODO: find a downloadable url
-    url = "https://drive.google.com/open?id=0B4IapRTv9pJ1WGZVd1VDMmhwdlE"
+    url = "https://docs.google.com/uc?export=download&id=0B4IapRTv9pJ1WGZVd1VDMmhwdlE"
 
     def __init__(self, root, domain=None, train=True, transform=None, download=False):
         """Init Office31 dataset."""
@@ -50,12 +51,12 @@ class Office31(data.Dataset):
         self.domain = domain
 
         # download dataset.
-        # if download:
-        #     self.download()
-        # if not self._check_exists():
-        #     raise RuntimeError(
-        #         "Dataset not found." + " You can use download=True to download it"
-        #     )
+        if download:
+            self.download()
+        if not self._check_exists():
+            raise RuntimeError(
+                "Dataset not found." + " You can use download=True to download it"
+            )
 
         self.labeler = preprocessing.LabelEncoder()
         self.data, self.targets = self.load_samples()
@@ -91,24 +92,34 @@ class Office31(data.Dataset):
 
     def download(self):
         """Download dataset."""
-        raise NotImplementedError(f"Please download manually from {self.url}")
-        logging.info("[DONE]")
-        return
-
-    def extract_gzip(self):
-        raise NotImplementedError(f"Please detar manually from {self.filename}")
         filename = os.path.join(self.root, self.filename)
         dirname = os.path.join(self.root, self.dirname)
-        with tarfile.open(filename, "r:gz") as tar:
-            for member in tar.getmembers():
-                f = tar.extractfile(member)
-                if f is not None:
-                    content = f.read()
+        if not os.path.exists(filename):
+            logging.info("Downloading " + self.url)
+            with requests.Session() as session:
+                resp = session.head(self.url)
+                confirm = None
+                for key, value in resp.cookies.items():
+                    if "download_warning" in key:
+                        confirm = value
+                        break
+                if confirm is None:
+                    raise RuntimeError("Could not find 'download_warning' in cookies")
+                resp = session.get(f"{self.url}&confirm={urllib.parse.quote(confirm)}")
+                with open(filename, "wb") as f:
+                    f.write(resp.content)
+            os.makedirs(dirname, exist_ok=True)
+            logging.info("Extracting files to " + dirname)
+            with tarfile.open(filename, "r:gz") as tar:
+                tar.extractall(path=dirname)
+        logging.info("[DONE]")
 
     def load_samples(self):
         """Load sample images from dataset."""
         imgdir = os.path.join(self.root, self.dirname, self.domain, "images")
         image_list = glob.glob(f"{imgdir}/*/*.jpg")
+        if len(image_list) == 0:
+            raise RuntimeError("Offce31 dataset is empty. Maybe it was not downloaded.")
         labels = [os.path.split(os.path.split(p)[0])[-1] for p in image_list]
         labels = self.labeler.fit_transform(labels)
         n_total = len(image_list)
