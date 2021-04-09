@@ -368,7 +368,10 @@ class CausalBlobs(torch.utils.data.Dataset):
         else:
             self.cluster_params = cluster_params
 
-        cluster_hash = xp.param_to_hash(cluster_params)
+        tmp_cluster_params = cluster_params.copy()
+        if isinstance(cluster_params["centers"], np.ndarray):
+            tmp_cluster_params["centers"] = tmp_cluster_params["centers"].tolist()
+        cluster_hash = xp.param_to_hash(tmp_cluster_params)
         transform_hash = xp.param_to_hash(transform)
         self.data_dir = os.path.join(cluster_hash, transform_hash)
         root_dir = os.path.join(self.root, self.raw_folder)
@@ -376,7 +379,7 @@ class CausalBlobs(torch.utils.data.Dataset):
         xp.record_hashes(
             os.path.join(root_dir, "parameters.json"),
             f"{cluster_hash}/{transform_hash}",
-            {"cluster_params": cluster_params, "transform": transform,},
+            {"cluster_params": tmp_cluster_params, "transform": transform},
         )
 
         self.training_file = "causal_blobs_train.pt"
