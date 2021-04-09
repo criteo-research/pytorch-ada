@@ -241,7 +241,10 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "-r", "--run", help="Override run button and run if true", action="store_true",
+        "-r",
+        "--run",
+        help="Override run button and run if true",
+        action="store_true",
     )
 
     parser.add_argument(

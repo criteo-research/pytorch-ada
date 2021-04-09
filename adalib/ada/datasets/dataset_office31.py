@@ -19,13 +19,13 @@ from sklearn import preprocessing
 
 
 class Office31(data.Dataset):
-    """Office31 Domain Adaptation Dataset from the 
-    `Domain Adaptation Project at Berkeley <https://people.eecs.berkeley.edu/~jhoffman/domainadapt/#datasets_code>`_. 
+    """Office31 Domain Adaptation Dataset from the
+    `Domain Adaptation Project at Berkeley <https://people.eecs.berkeley.edu/~jhoffman/domainadapt/#datasets_code>`_.
 
     Args:
-        root (string): 
+        root (string):
             Root directory of dataset where dataset file exist.
-        train (bool, optional): 
+        train (bool, optional):
             If True, resample from dataset randomly.
         download (bool, optional):
             If true, downloads the dataset

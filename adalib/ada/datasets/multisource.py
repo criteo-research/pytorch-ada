@@ -38,7 +38,7 @@ class DomainsDatasetBase:
         Args:
             split (string, optional): ["train"|"valid"|"test"]. Which dataset to iterate on. Defaults to "train".
             batch_size (int, optional): Defaults to 32.
-        
+
         Returns:
             MultiDataLoader: A dataloader with API similar to the torch.dataloader, but returning
                 batches from several domains at each iteration.
@@ -58,7 +58,7 @@ class MultiDomainDatasets(DomainsDatasetBase):
         n_fewshot=None,
         random_state=None,
     ):
-        """The class controlling how the source and target domains are 
+        """The class controlling how the source and target domains are
             iterated over.
 
         Args:
@@ -68,7 +68,7 @@ class MultiDomainDatasets(DomainsDatasetBase):
             source_sampling_config (SamplingConfig, optional): How to sample from the source. Defaults to None (=> RandomSampler).
             target_sampling_config (SamplingConfig, optional): How to sample from the target. Defaults to None (=> RandomSampler).
             size_type (DatasetSizeType, optional): Which dataset size to use to define the number of epochs vs batch_size. Defaults to DatasetSizeType.Max.
-            n_fewshot (int, optional): Number of target samples for which the label may be used, 
+            n_fewshot (int, optional): Number of target samples for which the label may be used,
                 to define the few-shot, semi-supervised setting. Defaults to None.
             random_state ([int|np.random.RandomState], optional): Used for deterministic sampling/few-shot label selection. Defaults to None.
         """

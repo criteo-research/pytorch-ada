@@ -23,7 +23,7 @@ class XpResults:
         """
         Args:
             metrics (list of string): Which metrics to record.
-            df (pandas.DataFrame, optional): columns are: metrics + [seed, method, split]. 
+            df (pandas.DataFrame, optional): columns are: metrics + [seed, method, split].
             Defaults to None.
         """
         self._metrics = metrics[:]

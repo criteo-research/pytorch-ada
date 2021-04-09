@@ -80,7 +80,7 @@ def plot_archi_data(
 ):
     """This method generates a series of figures depending on the model and
     on the dataset used.
-    
+
     For toy data, more figures are available:
 
         - the classifier boundary
@@ -97,7 +97,7 @@ def plot_archi_data(
     Args:
         domain_archi (BaseAdaptTrainer):
             the trained architecture.
-        tag (string): 
+        tag (string):
             the name of the method used both in the generated image titles and file names.
         save_prefix (string, optional): defaults to None.
             images will be saved to "{save_prefix}_{auto-gen-name}.png"
@@ -105,7 +105,7 @@ def plot_archi_data(
         plot_features (bool): defaults to None
             None or string or list of strings from ("pca", "tsne", "umap")
         plot_f_lines (bool, optional): defaults to False.
-            If True, plot the lines corresponding to the first neurons for 2D data. 
+            If True, plot the lines corresponding to the first neurons for 2D data.
         do_domain_boundary (bool, optional): defaults to False
             If True, plot the domain boundary for 2D toy data.
         do_entropy (bool, optional): defaults to False

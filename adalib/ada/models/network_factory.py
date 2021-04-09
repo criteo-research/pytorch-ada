@@ -28,7 +28,7 @@ def get_module_fn(module_name):
 class NetworkFactory:
     """
     This class takes a network configuration dictionary and
-    creates the corresponding modules. 
+    creates the corresponding modules.
     """
 
     def __init__(self, network_config):

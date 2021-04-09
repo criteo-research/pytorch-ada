@@ -22,7 +22,10 @@ if __name__ == "__main__":
         "{method} (rd={random_dim})",
         method="CDAN-E",
         use_random=True,
-        random_dim=Iter(512, 128,),
+        random_dim=Iter(
+            512,
+            128,
+        ),
     ).save(
         os.path.join(args.output, "method_variants.json")
     )

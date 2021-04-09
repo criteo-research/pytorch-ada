@@ -178,10 +178,16 @@ def configure_dataset(default_dir, on_sidebar=True):
             default_r0 = default_params["shift"]["re"][0]
             default_r1 = default_params["shift"]["re"][1]
         re0 = stmod.slider(
-            "Rotation class 0", min_value=-np.pi, max_value=np.pi, value=default_r0,
+            "Rotation class 0",
+            min_value=-np.pi,
+            max_value=np.pi,
+            value=default_r0,
         )
         re1 = stmod.slider(
-            "Rotation class 1", min_value=-np.pi, max_value=np.pi, value=default_r1,
+            "Rotation class 1",
+            min_value=-np.pi,
+            max_value=np.pi,
+            value=default_r1,
         )
         transl0 = default_params["shift"]["te"]
         if isinstance(transl0, float):
@@ -191,10 +197,16 @@ def configure_dataset(default_dir, on_sidebar=True):
             default_t0 = default_params["shift"]["te"][0]
             default_t1 = default_params["shift"]["te"][1]
         te0 = stmod.slider(
-            "Translation class 0", min_value=-3.0, max_value=3.0, value=default_t0,
+            "Translation class 0",
+            min_value=-3.0,
+            max_value=3.0,
+            value=default_t0,
         )
         te1 = stmod.slider(
-            "Translation class 1", min_value=-3.0, max_value=3.0, value=default_t1,
+            "Translation class 1",
+            min_value=-3.0,
+            max_value=3.0,
+            value=default_t1,
         )
         toy_params["shift"]["re"] = [re0, re1]
         toy_params["shift"]["te"] = [te0, te1]

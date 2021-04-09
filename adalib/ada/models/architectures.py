@@ -197,7 +197,7 @@ class BaseAdaptTrainer(pl.LightningModule):
          - a `compute_loss` function that returns the task loss :math:`\mathcal{L}_c` and adaptation loss :math:`\mathcal{L}_a`, as well as
            a dictionary for summary statistics and other metrics you may want to have access to.
 
-        The default training step uses only the task loss :math:`\mathcal{L}_c` during warmup, 
+        The default training step uses only the task loss :math:`\mathcal{L}_c` during warmup,
         the uses the loss defined as:
 
         :math:`\mathcal{L} = \mathcal{L}_c + \lambda \mathcal{L}_a`,
@@ -217,7 +217,7 @@ class BaseAdaptTrainer(pl.LightningModule):
             method (Method, optional): the method implemented by the class. Defaults to None.
                 Mostly useful when several methods may be implemented using the same class.
             lambda_init (float, optional): Weight attributed to the adaptation part of the loss. Defaults to 1.0.
-            adapt_lambda (bool, optional): Whether to make lambda grow from 0 to 1 following the schedule from 
+            adapt_lambda (bool, optional): Whether to make lambda grow from 0 to 1 following the schedule from
                 the DANN paper. Defaults to True.
             adapt_lr (bool, optional): Whether to use the schedule for the learning rate as defined
                 in the DANN paper. Defaults to True.
@@ -287,7 +287,7 @@ class BaseAdaptTrainer(pl.LightningModule):
 
         Args:
             batch (tuple): batches returned by the MultiDomainLoader.
-            split_name (str, optional): learning stage (one of ["T", "V", "Te"]). 
+            split_name (str, optional): learning stage (one of ["T", "V", "Te"]).
                 Defaults to "V" for validation. "T" is for training and "Te" for test.
                 This is currently used only for naming the metrics used for logging.
 
@@ -388,17 +388,24 @@ class BaseAdaptTrainer(pl.LightningModule):
     def _configure_optimizer(self, parameters):
         if self._optimizer_params is None:
             optimizer = torch.optim.Adam(
-                parameters, lr=self._init_lr, betas=(0.8, 0.999), weight_decay=1e-5,
+                parameters,
+                lr=self._init_lr,
+                betas=(0.8, 0.999),
+                weight_decay=1e-5,
             )
             return [optimizer]
         if self._optimizer_params["type"] == "Adam":
             optimizer = torch.optim.Adam(
-                parameters, lr=self._init_lr, **self._optimizer_params["optim_params"],
+                parameters,
+                lr=self._init_lr,
+                **self._optimizer_params["optim_params"],
             )
             return [optimizer]
         if self._optimizer_params["type"] == "SGD":
             optimizer = torch.optim.SGD(
-                parameters, lr=self._init_lr, **self._optimizer_params["optim_params"],
+                parameters,
+                lr=self._init_lr,
+                **self._optimizer_params["optim_params"],
             )
 
             if self._adapt_lr:
@@ -571,7 +578,7 @@ class DANNtrainer(BaseDANNLike):
 class CDANtrainer(BaseDANNLike):
     """
     Implements CDAN: Long, Mingsheng, et al. "Conditional adversarial domain adaptation."
-    Advances in Neural Information Processing Systems. 2018. 
+    Advances in Neural Information Processing Systems. 2018.
     https://papers.nips.cc/paper/7436-conditional-adversarial-domain-adaptation.pdf
     """
 
@@ -675,10 +682,10 @@ class CDANtrainer(BaseDANNLike):
 
 class WDGRLtrainer(BaseDANNLike):
     """
-    Implements WDGRL as described in 
-    Shen, Jian, et al. 
+    Implements WDGRL as described in
+    Shen, Jian, et al.
     "Wasserstein distance guided representation learning for domain adaptation."
-    Thirty-Second AAAI Conference on Artificial Intelligence. 2018. 
+    Thirty-Second AAAI Conference on Artificial Intelligence. 2018.
     https://arxiv.org/pdf/1707.01217.pdf
 
     This class also implements the asymmetric ($\beta$) variant described in:
@@ -833,10 +840,10 @@ class WDGRLtrainer(BaseDANNLike):
 
 class WDGRLtrainerMod(WDGRLtrainer):
     """
-    Implements a modified version WDGRL as described in 
-    Shen, Jian, et al. 
+    Implements a modified version WDGRL as described in
+    Shen, Jian, et al.
     "Wasserstein distance guided representation learning for domain adaptation."
-    Thirty-Second AAAI Conference on Artificial Intelligence. 2018. 
+    Thirty-Second AAAI Conference on Artificial Intelligence. 2018.
     https://arxiv.org/pdf/1707.01217.pdf
 
     This class also implements the asymmetric ($\beta$) variant described in:
@@ -965,8 +972,8 @@ class FewShotDANNtrainer(BaseDANNLike):
     MME: immplements Saito, Kuniaki, et al.
     "Semi-supervised domain adaptation via minimax entropy."
     Proceedings of the IEEE International Conference on Computer Vision. 2019
-    https://arxiv.org/pdf/1904.06487.pdf 
-    
+    https://arxiv.org/pdf/1904.06487.pdf
+
     """
 
     def __init__(
@@ -1112,7 +1119,7 @@ class DANtrainer(BaseMMDLike):
     Long, Mingsheng, et al.
     "Learning Transferable Features with Deep Adaptation Networks."
     International Conference on Machine Learning. 2015.
-    http://proceedings.mlr.press/v37/long15.pdf 
+    http://proceedings.mlr.press/v37/long15.pdf
     code based on https://github.com/thuml/Xlearn.
     """
 
@@ -1122,7 +1129,10 @@ class DANtrainer(BaseMMDLike):
     def _compute_mmd(self, phi_s, phi_t, y_hat, y_t_hat):
         batch_size = int(phi_s.size()[0])
         kernels = losses.gaussian_kernel(
-            phi_s, phi_t, kernel_mul=self._kernel_mul, kernel_num=self._kernel_num,
+            phi_s,
+            phi_t,
+            kernel_mul=self._kernel_mul,
+            kernel_num=self._kernel_num,
         )
         return losses.compute_mmd_loss(kernels, batch_size)
 
@@ -1130,7 +1140,7 @@ class DANtrainer(BaseMMDLike):
 class JANtrainer(BaseMMDLike):
     """
     This is an implementation of JAN
-    Long, Mingsheng, et al. 
+    Long, Mingsheng, et al.
     "Deep transfer learning with joint adaptation networks."
     International Conference on Machine Learning, 2017.
     https://arxiv.org/pdf/1605.06636.pdf

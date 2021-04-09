@@ -39,10 +39,10 @@ def set_all_seeds(seed):
     We activate the PyTorch options for best reproducibility. Note that this may be detrimental
     to processing speed, as per the above documentation:
 
-      ...the processing speed (e.g. the number of batches trained per second) may be lower 
-      than when the model functions nondeterministically. 
-      However, even though single-run speed may be slower, depending on your application 
-      determinism may save time by facilitating experimentation, debugging, 
+      ...the processing speed (e.g. the number of batches trained per second) may be lower
+      than when the model functions nondeterministically.
+      However, even though single-run speed may be slower, depending on your application
+      determinism may save time by facilitating experimentation, debugging,
       and regression testing.
 
     Args:
@@ -139,11 +139,11 @@ def train_model(
 
     Returns:
         2-elements tuple containing:
-        
+
             - pl.Trainer: object containing the resulting metrics, used for evaluation.
-            - BaseAdaptTrainer: pl.LightningModule object (derived class depending on `method`), containing 
+            - BaseAdaptTrainer: pl.LightningModule object (derived class depending on `method`), containing
                 both the dataset & trained networks.
-    
+
     """
     if type(method) is str:
         method = archis.Method(method)
@@ -244,7 +244,8 @@ def train_model(
 
     if tensorboard_dir is not None:
         tnb_logger = TensorBoardLogger(
-            save_dir=tensorboard_dir, name=f"{data_name}_{method_name}",
+            save_dir=tensorboard_dir,
+            name=f"{data_name}_{method_name}",
         )
     else:
         tnb_logger = None
@@ -376,7 +377,10 @@ def loop_train_test_model(
         )
         results.to_csv(backup_file)
         results.print_scores(
-            method_name, stdout=True, fdout=None, print_func=tqdm.write,
+            method_name,
+            stdout=True,
+            fdout=None,
+            print_func=tqdm.write,
         )
         res_archis[seed] = trained_archi
         progress_callback((i + 1) / nseeds)

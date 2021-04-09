@@ -20,7 +20,12 @@ import matplotlib.pyplot as plt
 
 
 def get_best_archis_for_seed(
-    seed, test_params, data_factory, gpus, methods_variant_params, checkpoint_dir,
+    seed,
+    test_params,
+    data_factory,
+    gpus,
+    methods_variant_params,
+    checkpoint_dir,
 ):
     best_archis = {}
     for method_name, method_params in sorted(methods_variant_params.items()):
