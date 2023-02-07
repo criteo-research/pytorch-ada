@@ -156,7 +156,7 @@ def run_loop(force_run=False):
 
     logging.getLogger("matplotlib").setLevel(logging.ERROR)
     all_figs = defaultdict(dict)
-    for (name, res) in archis_res.items():
+    for name, res in archis_res.items():
         if isinstance(res, list):
             for fig_name in fig_names:
                 for fig_file in res:
@@ -193,7 +193,6 @@ def run_loop(force_run=False):
 
 
 if __name__ == "__main__":
-
     st.title("Domain adaptation with toy data")
     st.write(
         "Easily create a toy dataset that helps you"

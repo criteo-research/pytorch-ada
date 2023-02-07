@@ -212,7 +212,7 @@ if __name__ == "__main__":
     if do_plots:
         logging.getLogger("matplotlib").setLevel(logging.ERROR)
 
-        for (name, archi) in archis_res.items():
+        for name, archi in archis_res.items():
             plot_archi_data(
                 archi,
                 name,

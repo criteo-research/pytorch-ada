@@ -11,7 +11,6 @@ class Office31Dataset(Enum):
 
     @staticmethod
     def get_accesses(source: "Office31Dataset", target: "Office31Dataset", data_path):
-
         return (
             Office31DatasetAccess(source, data_path),
             Office31DatasetAccess(target, data_path),
